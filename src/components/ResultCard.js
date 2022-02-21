@@ -3,13 +3,15 @@ import Moment from "react-moment";
 import { GlobalContext } from "../context/GlobalState";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { AiOutlineHeart } from 'react-icons/ai'
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Rate from '../components/Rating';
 
 export const ResultCard = ({ movie }) => {
   const {
     addMovieToWatchlist,
-    addMovieToFaves,
+    addMovieTofaves,
     watchlist,
     faves,
   } = useContext(GlobalContext);
@@ -26,13 +28,21 @@ export const ResultCard = ({ movie }) => {
   const favesDisabled = storedMoviefaves ? true : false;
 
   const [show, setShow] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState();
+  const [cast, setCast] = useState();
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = async () => {
+    setShow(true);
+    setSelectedMovie(movie);
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=32bab9e20f1e44d9fce8f05bd0f37d8d`);
+    const data = await res.json();
+    setCast(data);
+  }
 
   const ModalContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 20px 20px;
     justify-content: center;
     border-bottom: 1px solid lightgray;
@@ -66,25 +76,27 @@ export const ResultCard = ({ movie }) => {
               disabled={watchlistDisabled}
               onClick={() => addMovieToWatchlist(movie)}
             >
-              Add to Watchlist
+              Add to <i className="fa-fw far fa-eye"></i>
             </button>
 
             <button
               className="btn"
               disabled={favesDisabled}
-              onClick={() => addMovieToFaves(movie)}
+              onClick={() => addMovieTofaves(movie)}
             >
-              Add to faves
+              Add to <AiOutlineHeart />
             </button>
           </div>
         </div>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>More Information</Modal.Title>
+          <Modal.Title>{selectedMovie && selectedMovie.title}</Modal.Title>
         </Modal.Header>
         <ModalContainer>
-        <Modal.Body>More information 
+        <Modal.Body>
+          <p>{cast && movie.overview}</p>
+          <Rate rate={Math.round(movie.vote_average / 2)}></Rate>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
