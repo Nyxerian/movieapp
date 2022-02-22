@@ -122,11 +122,11 @@ header .nav-links li:last-child {
 .add-content {
   padding: 50px 0;
   max-width: 600px;
-  margin: 0 auto;
 }
 
 .add-content .input-wrapper input {
   width: 100%;
+  margin-left: 45%;
   background-color: var(--primary);
   padding: 10px;
   border-radius: 5px;
@@ -137,12 +137,18 @@ header .nav-links li:last-child {
 
 .results {
   padding: 0;
-  margin: 0;
   margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
 }
 
 .results li {
   list-style: none;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  width: auto;
 }
 
 .result-card {
@@ -172,6 +178,7 @@ header .nav-links li:last-child {
   color: var(--primary);
   font-weight: 600;
   margin: 0;
+  cursor: pointer;
 }
 
 .result-card .info .release-date {
