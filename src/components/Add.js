@@ -30,7 +30,7 @@ export const Add = () => {
           <div className="input-wrapper">
             <input
               type="text"
-              placeholder="Search for a movie"
+              placeholder="Search for a movie..."
               value={query}
               onChange={onChange}
             />

@@ -70,23 +70,7 @@ export const ResultCard = ({ movie }) => {
             </h4>
           </div>
 
-          <div className="controls">
-            <button
-              className="btn"
-              disabled={watchlistDisabled}
-              onClick={() => addMovieToWatchlist(movie)}
-            >
-              Add to <i className="fa-fw far fa-eye"></i>
-            </button>
-
-            <button
-              className="btn"
-              disabled={favesDisabled}
-              onClick={() => addMovieTofaves(movie)}
-            >
-              Add to <AiOutlineHeart />
-            </button>
-          </div>
+          
         </div>
       </div>
       <Modal show={show} onHide={handleClose}>
@@ -95,10 +79,29 @@ export const ResultCard = ({ movie }) => {
         </Modal.Header>
         <ModalContainer>
         <Modal.Body>
+          <h4>Overview</h4><br/>
           <p>{cast && movie.overview}</p>
           <Rate rate={Math.round(movie.vote_average / 2)}></Rate>
+          
         </Modal.Body>
         <Modal.Footer>
+        <div className="controls">
+            <button
+              className="btn"
+              disabled={watchlistDisabled}
+              onClick={() => addMovieToWatchlist(movie)}
+            >
+              Add to <i className="fa-fw far fa-eye"></i>
+            </button>
+            <span style={{marginLeft:4}}> {" "} </span>
+            <button
+              className="btn"
+              disabled={favesDisabled}
+              onClick={() => addMovieTofaves(movie)}
+            >
+              Add to <AiOutlineHeart />
+            </button>
+          </div>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

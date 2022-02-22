@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { AiOutlineHeart } from 'react-icons/ai'
+import { IoHeartDislikeOutline } from 'react-icons/io5'
 
 export const MovieControls = ({ type, movie }) => {
   const {
@@ -14,7 +16,7 @@ export const MovieControls = ({ type, movie }) => {
       {type === "watchlist" && (
         <>
           <button className="ctrl-btn" onClick={() => addMovieTofaves(movie)}>
-            <i className="fa-fw far fa-eye"></i>
+            <AiOutlineHeart />
           </button>
 
           <button
@@ -29,7 +31,7 @@ export const MovieControls = ({ type, movie }) => {
       {type === "faves" && (
         <>
           <button className="ctrl-btn" onClick={() => moveToWatchlist(movie)}>
-            <i className="fa-fw far fa-eye-slash"></i>
+            <IoHeartDislikeOutline/>
           </button>
 
           <button
