@@ -11,13 +11,14 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   padding: 0;
   margin: 0;
+  
 }
 
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 15%;
 }
 
 @media (min-width: 768px) {
@@ -83,6 +84,7 @@ header .inner-content {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  margin-left: 25px;
 }
 
 header a {
@@ -126,7 +128,7 @@ header .nav-links li:last-child {
 
 .add-content .input-wrapper input {
   width: 100%;
-  margin-left: 45%;
+  margin-left: 50%;
   background-color: var(--primary);
   padding: 10px;
   border-radius: 5px;
@@ -144,11 +146,10 @@ header .nav-links li:last-child {
 }
 
 .results li {
-  list-style: none;
-  
+  list-style: none;  
   border-width: 1px;  
   padding: 15px;
-  width: auto;
+  width: 250px;
   -webkit-box-shadow: 0 15px 10px #777;
   -moz-box-shadow: 0 15px 10px #777;
   box-shadow: 0 10px 10px #777;
@@ -166,6 +167,7 @@ header .nav-links li:last-child {
   background-color: #dbdada;
   border-radius: 5px;
   margin-right: 15px;
+  margin-top: 20px;
   display: block;
   color: transparent;
 }
@@ -180,7 +182,7 @@ header .nav-links li:last-child {
   font-size: 1.25rem;
   color: var(--primary);
   font-weight: 600;
-  margin: 0;
+  margin-top: 20px;
   cursor: pointer;
 }
 

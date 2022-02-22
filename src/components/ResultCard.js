@@ -79,7 +79,7 @@ export const ResultCard = ({ movie }) => {
         </Modal.Header>
         <ModalContainer>
         <Modal.Body>
-          <h4>Overview</h4><br/>
+          <h4>Plot Overview</h4><br/>
           <p>{cast && movie.overview}</p>
           <Rate rate={Math.round(movie.vote_average / 2)}></Rate>
           
